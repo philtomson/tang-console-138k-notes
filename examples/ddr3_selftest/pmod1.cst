@@ -1,0 +1,18 @@
+// Append to Sipeed's ddr3_1v4_hs.cst (Gowin wants a single .cst per project).
+// PMOD-DTx2 in the Tang Console's PMOD1 -- see docs/06.
+IO_LOC "pmod_seg[0]" D22;
+IO_LOC "pmod_seg[1]" E22;
+IO_LOC "pmod_seg[2]" E21;
+IO_LOC "pmod_seg[3]" F20;
+IO_LOC "pmod_seg[4]" F19;
+IO_LOC "pmod_seg[5]" W19;
+IO_LOC "pmod_seg[6]" W20;
+IO_LOC "pmod_sel" D21;
+IO_PORT "pmod_seg[0]" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_PORT "pmod_seg[1]" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_PORT "pmod_seg[2]" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_PORT "pmod_seg[3]" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_PORT "pmod_seg[4]" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_PORT "pmod_seg[5]" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_PORT "pmod_seg[6]" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_PORT "pmod_sel" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;

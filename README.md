@@ -22,14 +22,16 @@ Board page: <https://wiki.sipeed.com/hardware/en/tang/tang-console/retro-console
 | [docs/05-debug-methods.md](docs/05-debug-methods.md) | Stage-hash debugging over UART; gate-level replay of a synthesized block against RTL |
 | [docs/06-pmod-dtx2.md](docs/06-pmod-dtx2.md) | Driving the PMOD-DTx2 two-digit 7-segment module from the Console's PMOD1 |
 
-Examples (MIT, standalone — no project-specific code):
+Examples and tools (MIT, standalone — no project-specific code; both examples
+were built from these files and run on the board):
 
-| Example | |
+| | |
 |---|---|
-| [examples/pmod_dtx2](examples/pmod_dtx2) | 7-segment status display driver + constraints |
-| [examples/ddr3_selftest](examples/ddr3_selftest) | Minimal DDR3 bring-up / write-verify self-test with UART report |
-| [examples/synth_pitfalls](examples/synth_pitfalls) | Minimal reproducers for the synthesis/simulation mismatches |
-| [tools/gate_replay](tools/gate_replay) | Scripts to replay recorded inputs into RTL and a Gowin netlist and report the first divergence |
+| [examples/ddr3_selftest](examples/ddr3_selftest) | Minimal DDR3 bring-up: write a pattern, read it back, report over UART and a PMOD display |
+| [examples/pmod_dtx2](examples/pmod_dtx2) | PMOD-DTx2 7-segment driver and a counting demo |
+| [examples/synth_pitfalls](examples/synth_pitfalls) | Tools that catch the synthesis mismatches: RAM-mapping check, strict elaboration, LUT → case-table rewrite |
+| [tools/gowin_build](tools/gowin_build) | Headless Gowin build script, environment wrapper, timing summary |
+| [tools/gate_replay](tools/gate_replay) | Replay recorded inputs into RTL and a Gowin netlist and report the first divergence |
 
 ## Quick facts
 
@@ -51,9 +53,10 @@ Examples (MIT, standalone — no project-specific code):
   * issue writes as a **single-cycle** `cmd_en` + `wr_data_en` when both
     `cmd_ready` and `wr_data_rdy` are high — a held `cmd_en` is accepted more
     than once;
-  * **wait ≥ 21 ms after calibration before writing** (we use 42 ms): the
-    controller stalls writes for ~10 ms after `init_calib_complete` and
-    silently loses writes accepted as it comes out of that stall.
+  * **verify what you write at bring-up** (write a pattern, read it back).
+    In one design the controller silently lost writes issued in a window
+    ~10 ms after calibration, and a 21 ms+ wait fixed it.  A minimal design
+    with the same setup never showed it; see [docs/03](docs/03-ddr3-bringup.md) §4.
 * **Gowin synthesis can silently differ from simulation.**  We hit four real
   cases (two writes to one array in the same cycle, a LUT idiom mangled in
   context, implicit 1-bit nets from use-before-declare, a truncated literal).

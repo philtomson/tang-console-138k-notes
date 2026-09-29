@@ -1,0 +1,6 @@
+# Gowin build output (project dirs are created next to where you run build.tcl)
+*/impl/
+*.gprj
+*.gprj.user
+**/rp/
+*.log
