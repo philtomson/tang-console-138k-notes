@@ -1,4 +1,4 @@
-# Sipeed Tang Console 138K — field notes
+# Sipeed Tang Retro Console 138K FPGA board — field notes
 
 Hard-won, measured notes on the **Sipeed Tang Retro Console** (retro console board) with
 the **GW5AST-138C** core, from bringing up a DDR3-backed FPGA design (a BitNet
