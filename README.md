@@ -11,6 +11,12 @@ and the DDR3 section will likely save you days.
 
 Board page: <https://wiki.sipeed.com/hardware/en/tang/tang-console/retro-console.html>
 
+## Tang Retro 138K firmware
+
+For the tested TangCore BL616 firmware for the Tang Retro 138K—including the
+cleaned-up v0.9 controller handling and the experimental file-scrolling test,
+see the [Tang Retro 138K firmware releases](https://github.com/jddchatham/tang-retro138k-firmware/releases).
+
 ## Contents
 
 | Doc | What's in it |
